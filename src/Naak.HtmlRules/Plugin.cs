@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.Web;
 using Glimpse.Core.Extensibility;
-using Naak.HtmlRules.Impl;
 
 namespace Naak.HtmlRules
 {

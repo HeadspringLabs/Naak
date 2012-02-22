@@ -69,14 +69,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccessibilityRenderer.cs" />
     <Compile Include="CaptureStream.cs" />
+    <Compile Include="HtmlDocumentExtensions.cs" />
     <Compile Include="HtmlRuleAttribute.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="IHtmlRule.cs" />
-    <Compile Include="Impl\AccessibilityRenderer.cs" />
     <Compile Include="Impl\AtLeastOneH1.cs" />
     <Compile Include="Impl\ContextOfLinkTextMustMakeSense.cs" />
-    <Compile Include="Impl\HtmlDocumentExtensions.cs" />
     <Compile Include="Impl\ImagesDontHaveDuplicateAltText.cs" />
     <Compile Include="Impl\NoDuplicateImageAltTags.cs" />
     <Compile Include="Impl\FieldsetsHaveLegends.cs" />
@@ -86,8 +86,8 @@
     <Compile Include="Impl\ImagesHaveAltText.cs" />
     <Compile Include="Impl\LabelsRelateToFormElements.cs" />
     <Compile Include="Impl\TablesHaveColumnHeaders.cs" />
-    <Compile Include="Impl\ValidationError.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ValidationError.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Readme\glimpse.readme.txt" />

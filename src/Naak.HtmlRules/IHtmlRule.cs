@@ -1,4 +1,3 @@
-using Naak.HtmlRules.Impl;
 using HtmlAgilityPack;
 
 namespace Naak.HtmlRules
