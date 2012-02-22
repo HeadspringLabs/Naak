@@ -93,6 +93,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Naak.HtmlRules.Default\Naak.HtmlRules.Default.csproj">
+      <Project>{9FBBEC0B-32EF-4858-994D-F073BE7C91F6}</Project>
+      <Name>Naak.HtmlRules.Default</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Naak.HtmlRules\Naak.HtmlRules.csproj">
       <Project>{5898B957-EF51-4EAC-ABDF-2B2220B3B0F6}</Project>
       <Name>Naak.HtmlRules</Name>

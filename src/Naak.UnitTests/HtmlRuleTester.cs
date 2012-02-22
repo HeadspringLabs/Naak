@@ -3,7 +3,6 @@ using System.Linq;
 using System.Text;
 using HtmlAgilityPack;
 using Naak.HtmlRules;
-using Naak.HtmlRules.Impl;
 using NUnit.Framework;
 using NUnit.Framework.SyntaxHelpers;
 

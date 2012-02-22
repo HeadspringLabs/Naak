@@ -75,17 +75,6 @@
     <Compile Include="HtmlRuleAttribute.cs" />
     <Compile Include="Plugin.cs" />
     <Compile Include="IHtmlRule.cs" />
-    <Compile Include="Impl\AtLeastOneH1.cs" />
-    <Compile Include="Impl\ContextOfLinkTextMustMakeSense.cs" />
-    <Compile Include="Impl\ImagesDontHaveDuplicateAltText.cs" />
-    <Compile Include="Impl\NoDuplicateImageAltTags.cs" />
-    <Compile Include="Impl\FieldsetsHaveLegends.cs" />
-    <Compile Include="Impl\FormElementsHaveLabels.cs" />
-    <Compile Include="Impl\HeadingsAreLogicallyOrdered.cs" />
-    <Compile Include="Impl\ImageInputsHaveAltText.cs" />
-    <Compile Include="Impl\ImagesHaveAltText.cs" />
-    <Compile Include="Impl\LabelsRelateToFormElements.cs" />
-    <Compile Include="Impl\TablesHaveColumnHeaders.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ValidationError.cs" />
   </ItemGroup>

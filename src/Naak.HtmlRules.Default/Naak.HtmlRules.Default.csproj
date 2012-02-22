@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9FBBEC0B-32EF-4858-994D-F073BE7C91F6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Naak.HtmlRules.Default</RootNamespace>
+    <AssemblyName>Naak.HtmlRules.Default</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="HtmlAgilityPack">
+      <HintPath>..\packages\HtmlAgilityPack.1.4.3\lib\HtmlAgilityPack.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AtLeastOneH1.cs" />
+    <Compile Include="ContextOfLinkTextMustMakeSense.cs" />
+    <Compile Include="FieldsetsHaveLegends.cs" />
+    <Compile Include="FormElementsHaveLabels.cs" />
+    <Compile Include="HeadingsAreLogicallyOrdered.cs" />
+    <Compile Include="ImageInputsHaveAltText.cs" />
+    <Compile Include="ImagesDontHaveDuplicateAltText.cs" />
+    <Compile Include="ImagesHaveAltText.cs" />
+    <Compile Include="LabelsRelateToFormElements.cs" />
+    <Compile Include="NoDuplicateImageAltTags.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TablesHaveColumnHeaders.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Naak.HtmlRules\Naak.HtmlRules.csproj">
+      <Project>{5898B957-EF51-4EAC-ABDF-2B2220B3B0F6}</Project>
+      <Name>Naak.HtmlRules</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

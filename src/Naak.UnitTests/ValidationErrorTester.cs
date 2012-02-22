@@ -1,5 +1,4 @@
 using Naak.HtmlRules;
-using Naak.HtmlRules.Impl;
 using NUnit.Framework;
 using NUnit.Framework.SyntaxHelpers;
 

@@ -1,8 +1,8 @@
 using System.Net.Mime;
 using System.Text;
-using Naak.HtmlRules.Impl;
 using NUnit.Framework;
 using NUnit.Framework.SyntaxHelpers;
+using Naak.HtmlRules.Default;
 
 namespace Naak.UnitTests
 {

@@ -1,5 +1,5 @@
 using System.Text;
-using Naak.HtmlRules.Impl;
+using Naak.HtmlRules.Default;
 using Naak.UnitTests;
 using NUnit.Framework;
 using NUnit.Framework.SyntaxHelpers;
