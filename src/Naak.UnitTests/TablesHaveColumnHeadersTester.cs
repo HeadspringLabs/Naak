@@ -3,6 +3,7 @@ using Naak.HtmlRules.Impl;
 using Naak.UnitTests;
 using NUnit.Framework;
 using NUnit.Framework.SyntaxHelpers;
+using Should;
 
 namespace Naak.UnitTests
 {
@@ -29,9 +30,11 @@ namespace Naak.UnitTests
 
 			ExecuteTest(new TablesHaveColumnHeaders(), bodyHtml.ToString());
 
-			Assert.That(ErrorCount, Is.EqualTo(2));
-			Assert.That(ContainsError(@"Layout table detected - if the table is a data table, use TH for the column or row headers. Otherwise, use CSS for layout: <table xmlns=""http://www.w3.org/1999/xhtml""><tr><td>Column 1</td><td>Column 2</td></tr><tr><td>Value 1</td><td>Value 2</td></tr></table>"));
-			Assert.That(ContainsError(@"Layout table detected - if the table is a data table, use TH for the column or row headers. Otherwise, use CSS for layout: <table xmlns=""http://www.w3.org/1999/xhtml""><tr><td>Value 1</td><td>Value 2</td></tr></table>"));
+            ErrorCount.ShouldEqual(2);
+		    Errors[0].Message.ShouldEqual(
+		        @"Layout table detected - if the table is a data table, use TH for the column or row headers. Otherwise, use CSS for layout: <table>  <tr><td>Column 1</td><td>Column 2</td></tr>  <tr><td>Value 1</td><td>Value 2</td></tr></table>");
+            Errors[1].Message.ShouldEqual(
+                @"Layout table detected - if the table is a data table, use TH for the column or row headers. Otherwise, use CSS for layout: <table>  <tr><td>Value 1</td><td>Value 2</td></tr></table>");
 		}
 
 		[Test]
@@ -55,9 +58,11 @@ namespace Naak.UnitTests
 
 			ExecuteTest(new TablesHaveColumnHeaders(), bodyHtml.ToString());
 
-			Assert.That(ErrorCount, Is.EqualTo(2));
-			Assert.That(ContainsError(@"Layout table detected - if the table is a data table, use TH for the column or row headers. Otherwise, use CSS for layout: <table xmlns=""http://www.w3.org/1999/xhtml""><tr><td>Row 1</td><td>Value 1</td></tr><tr><td>Row 2</td><td>Value 2</td></tr></table>"));
-			Assert.That(ContainsError(@"Layout table detected - if the table is a data table, use TH for the column or row headers. Otherwise, use CSS for layout: <table xmlns=""http://www.w3.org/1999/xhtml""><tr><td>Value 1</td></tr><tr><td>Value 2</td></tr></table>"));
+            ErrorCount.ShouldEqual(2);
+            Errors[0].Message.ShouldEqual(
+                @"Layout table detected - if the table is a data table, use TH for the column or row headers. Otherwise, use CSS for layout: <table>  <tr><td>Row 1</td><td>Value 1</td></tr>  <tr><td>Row 2</td><td>Value 2</td></tr></table>");
+            Errors[1].Message.ShouldEqual(
+                @"Layout table detected - if the table is a data table, use TH for the column or row headers. Otherwise, use CSS for layout: <table>  <tr><td>Value 1</td></tr>  <tr><td>Value 2</td></tr></table>");
 		}
 
         [Test]

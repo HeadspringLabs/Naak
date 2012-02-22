@@ -10,7 +10,7 @@ namespace Naak.HtmlRules.Impl
 		{
 			var records = new List<ValidationError>();
 
-			var nodes = document.SelectNodes("//fieldset[not(legend) or legend[not(text())]]");
+			var nodes = document.GetNodes("//fieldset[not(legend) or legend[not(text())]]");
 
 			foreach (var node in nodes)
 			{

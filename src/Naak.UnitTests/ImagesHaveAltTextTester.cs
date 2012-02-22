@@ -20,8 +20,8 @@ namespace Naak.UnitTests
 			ExecuteTest(new ImagesHaveAltText(), bodyHtml.ToString());
 
 			Assert.That(ErrorCount, Is.EqualTo(2));
-			Assert.That(ContainsError(@"Image missing alt text: <img alt="""" xmlns=""http://www.w3.org/1999/xhtml"" />"));
-			Assert.That(ContainsError(@"Image missing alt text: <img xmlns=""http://www.w3.org/1999/xhtml"" />"));
+			Assert.That(ContainsError(@"Image missing alt text: <img alt="""">"));
+			Assert.That(ContainsError(@"Image missing alt text: <img/>"));
 		}
 	}
 }

@@ -2,6 +2,7 @@ using System.Text;
 using Naak.HtmlRules.Impl;
 using NUnit.Framework;
 using NUnit.Framework.SyntaxHelpers;
+using Should;
 
 namespace Naak.UnitTests
 {
@@ -13,11 +14,9 @@ namespace Naak.UnitTests
 		{
 			ExecuteTest(new HeadingsAreLogicallyOrdered(), @"<div><h2>Second-Level Heading</h2></div>");
 
-			Assert.That(ErrorCount, Is.EqualTo(1));
-
-			Assert.That(
-				ContainsError(
-					@"Illogical heading order: Expected to find <h1> but found <h2 xmlns=""http://www.w3.org/1999/xhtml"">Second-Level Heading</h2> instead"));
+			ErrorCount.ShouldEqual(1);
+		    Errors[0].Message.ShouldEqual(
+		        @"Illogical heading order: Expected to find <h1> but found <h2>Second-Level Heading</h2> instead");
 		}
 
 		[Test]
@@ -29,11 +28,9 @@ namespace Naak.UnitTests
 
 			ExecuteTest(new HeadingsAreLogicallyOrdered(), html.ToString());
 
-			Assert.That(ErrorCount, Is.EqualTo(1));
-
-			Assert.That(
-				ContainsError(
-					@"Illogical heading order: Expected to find <h2> but found <h3 xmlns=""http://www.w3.org/1999/xhtml"" /> instead"));
+            ErrorCount.ShouldEqual(1);
+            Errors[0].Message.ShouldEqual(
+                @"Illogical heading order: Expected to find <h2> but found <h3 /> instead");
 		}
 
 		[Test]
@@ -61,11 +58,9 @@ namespace Naak.UnitTests
 
 			ExecuteTest(new HeadingsAreLogicallyOrdered(), html.ToString());
 
-			Assert.That(ErrorCount, Is.EqualTo(1));
-
-			Assert.That(
-				ContainsError(
-					@"Illogical heading order: Expected to find <h3> but found <h4 xmlns=""http://www.w3.org/1999/xhtml"" /> instead"));
+            ErrorCount.ShouldEqual(1);
+            Errors[0].Message.ShouldEqual(
+                @"Illogical heading order: Expected to find <h3> but found <h4 /> instead");
 		}
 	}
 }

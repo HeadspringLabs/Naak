@@ -52,24 +52,23 @@ namespace Naak.UnitTests
 
 			Assert.That(ErrorCount, Is.EqualTo(6));
 
-			Assert.That(
-				ContainsError(
-					@"Textbox missing correpsonding label: <input type=""text"" id=""txtMiddleName"" xmlns=""http://www.w3.org/1999/xhtml"" />"));
-			Assert.That(
-				ContainsError(
-					@"Textbox missing correpsonding label: <input type=""text"" id=""txtLastName"" xmlns=""http://www.w3.org/1999/xhtml"" />"));
-			Assert.That(
-				ContainsError(
-					@"Password textbox missing correpsonding label: <input type=""password"" id=""txtRetypePassword"" xmlns=""http://www.w3.org/1999/xhtml"" />"));
-			Assert.That(
-				ContainsError(
-					@"Checkbox missing correpsonding label: <input type=""checkbox"" id=""chkOption2"" xmlns=""http://www.w3.org/1999/xhtml"" />"));
-			Assert.That(
-				ContainsError(
-					@"Select list missing correpsonding label: <select id=""ddlStatus2"" xmlns=""http://www.w3.org/1999/xhtml"" />"));
-			Assert.That(
-				ContainsError(
-					@"Text area missing correpsonding label: <textarea id=""txtArea2"" xmlns=""http://www.w3.org/1999/xhtml"" />"));
-		}
+		    Assert.That(Errors[0].Message.Contains("Textbox missing corresponding label"));
+		    Assert.That(Errors[0].Message.Contains(@"id=""txtMiddleName"""));
+
+            Assert.That(Errors[1].Message.Contains("Textbox missing corresponding label"));
+            Assert.That(Errors[1].Message.Contains(@"id=""txtLastName"""));
+
+            Assert.That(Errors[2].Message.Contains("Password textbox missing corresponding label"));
+            Assert.That(Errors[2].Message.Contains(@"id=""txtRetypePassword"""));
+
+            Assert.That(Errors[3].Message.Contains("Checkbox missing corresponding label"));
+            Assert.That(Errors[3].Message.Contains(@"id=""chkOption2"""));
+
+            Assert.That(Errors[4].Message.Contains("Select list missing corresponding label"));
+            Assert.That(Errors[4].Message.Contains(@"id=""ddlStatus2"""));
+
+            Assert.That(Errors[5].Message.Contains("Text area missing corresponding label"));
+            Assert.That(Errors[5].Message.Contains(@"id=""txtArea2"""));
+	    }
 	}
 }

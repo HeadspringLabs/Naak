@@ -10,7 +10,7 @@ namespace Naak.HtmlRules.Impl
 		{
 			var records = new List<ValidationError>();
 
-			var nodes = document.SelectNodes("//h1");
+			var nodes = document.GetNodes("//h1");
 
 			if (nodes.Count == 0)
 			{

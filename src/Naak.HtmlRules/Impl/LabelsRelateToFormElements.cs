@@ -10,7 +10,7 @@ namespace Naak.HtmlRules.Impl
 		{
 			var records = new List<ValidationError>();
 
-			var labels = document.SelectNodes("//label");
+			var labels = document.GetNodes("//label");
 
 			foreach (var label in labels)
 			{
@@ -22,18 +22,18 @@ namespace Naak.HtmlRules.Impl
 					string labelId = forAttribute.Value;
 					string xpath = string.Format("//input[@id='{0}']", labelId);
 
-					relatedElement = document.SelectSingleNode(xpath);
+					relatedElement = document.GetNode(xpath);
 
 					if (relatedElement == null)
 					{
 						xpath = string.Format("//select[@id='{0}']", labelId);
-						relatedElement = document.SelectSingleNode(xpath);
+						relatedElement = document.GetNode(xpath);
 					}
 
 					if (relatedElement == null)
 					{
 						xpath = string.Format("//textarea[@id='{0}']", labelId);
-						relatedElement = document.SelectSingleNode(xpath);
+						relatedElement = document.GetNode(xpath);
 					}
 				}
 

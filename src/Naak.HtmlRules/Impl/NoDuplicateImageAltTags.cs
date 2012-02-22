@@ -10,7 +10,7 @@ namespace Naak.HtmlRules.Impl
 		{
 			var records = new List<ValidationError>();
 
-			//XmlNodeList nodes = document.SelectNodes("//img", namespaceManager);
+			//XmlNodeList nodes = document.GetNodes("//img", namespaceManager);
 			//var nodeList = new List<XmlNode>();
 
 			//foreach (XmlNode node in nodes)

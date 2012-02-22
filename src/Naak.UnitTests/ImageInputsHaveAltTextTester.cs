@@ -22,8 +22,8 @@ namespace Naak.UnitTests
 			ExecuteTest(new ImageInputsHaveAltText(), bodyHtml.ToString());
 
 			Assert.That(ErrorCount, Is.EqualTo(2));
-			Assert.That(ContainsError(@"Image input missing alt text: <input type=""image"" id=""imgFirst"" alt="""" xmlns=""http://www.w3.org/1999/xhtml"" />"));
-			Assert.That(ContainsError(@"Image input missing alt text: <input type=""image"" id=""imgSecond"" xmlns=""http://www.w3.org/1999/xhtml"" />"));
+			Assert.That(ContainsError(@"Image input missing alt text: <input type=""image"" id=""imgFirst"" alt="""">"));
+			Assert.That(ContainsError(@"Image input missing alt text: <input type=""image"" id=""imgSecond"">"));
 		}
 	}
 }

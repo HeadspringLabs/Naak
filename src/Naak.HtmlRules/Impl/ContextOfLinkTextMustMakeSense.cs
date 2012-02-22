@@ -50,7 +50,7 @@ namespace Naak.HtmlRules.Impl
 			var existingLinks = new List<Link>();
 			const string formElementXPath = "//a";
 
-			var linksNodeList = document.SelectNodes(formElementXPath);
+			var linksNodeList = document.GetNodes(formElementXPath);
 
 			if (linksNodeList != null)
 				foreach (var currentNode in linksNodeList)

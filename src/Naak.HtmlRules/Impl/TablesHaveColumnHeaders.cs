@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using HtmlAgilityPack;
 
 namespace Naak.HtmlRules.Impl
@@ -10,14 +11,14 @@ namespace Naak.HtmlRules.Impl
 		{
 			var records = new List<ValidationError>();
 
-			var nodes = document.SelectNodes("//table");
+			var nodes = document.GetNodes("//table");
 
 			if (nodes != null)
 				foreach (var node in nodes)
 				{
-					var tableHeaders = node.SelectNodes("tr/th");
-					var tableHeadersWithThead = node.SelectNodes("thead/tr/th");
-                    if (tableHeaders.Count < 1 && tableHeadersWithThead.Count < 1)
+                    var tableHeaders = node.GetNodes("tr/th");
+                    var tableHeadersWithThead = node.GetNodes("thead/tr/th");
+                    if (!tableHeaders.Any() && !tableHeadersWithThead.Any())
 					{
 						string message =
 							string.Format(

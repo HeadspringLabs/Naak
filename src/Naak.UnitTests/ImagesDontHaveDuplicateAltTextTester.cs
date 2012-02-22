@@ -22,8 +22,8 @@ namespace Naak.UnitTests
 			ExecuteTest(new ImagesDontHaveDuplicateAltText(), bodyHtml.ToString());
 
 			Assert.That(ErrorCount, Is.EqualTo(2));
-			Assert.That(ContainsError(@"Image has duplicate alt text: <img id=""i3"" alt=""Description"" xmlns=""http://www.w3.org/1999/xhtml"" />"));
-			Assert.That(ContainsError(@"Image has duplicate alt text: <img id=""i4"" alt=""Description"" xmlns=""http://www.w3.org/1999/xhtml"" />"));
+			Assert.That(ContainsError(@"Image has duplicate alt text: <img id=""i3"" alt=""Description"">"));
+			Assert.That(ContainsError(@"Image has duplicate alt text: <img id=""i4"" alt=""Description"">"));
 		}
 
 

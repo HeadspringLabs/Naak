@@ -12,7 +12,7 @@ namespace Naak.HtmlRules.Impl
 
 			string formElementXPath = "//input[@type='image'][not(@alt) or @alt='']";
 
-			var imageButtonsWithoutAlt = document.SelectNodes(formElementXPath);
+			var imageButtonsWithoutAlt = document.GetNodes(formElementXPath);
 
 			foreach (var imageButton in imageButtonsWithoutAlt)
 			{

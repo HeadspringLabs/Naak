@@ -14,7 +14,7 @@ namespace Naak.HtmlRules.Impl
 
 			const string formElementXPath = "//img";
 
-			var images = document.SelectNodes(formElementXPath);
+			var images = document.GetNodes(formElementXPath);
 
 			foreach (var currentImage in images)
 			{

@@ -6,7 +6,7 @@ namespace Naak.HtmlRules.Impl
     [HtmlRule]
 	public class FormElementsHaveLabels : IHtmlRule
 	{
-		public ValidationError[] ValidateHtml(HtmlDocument document)
+        public ValidationError[] ValidateHtml(HtmlDocument document)
 		{
 			var records = new List<ValidationError>();
 
@@ -22,7 +22,7 @@ namespace Naak.HtmlRules.Impl
 			{
 				var formElementXPath = definition.IsInput ? string.Format("//input[@type='{0}']", definition.TagName) : string.Format("//{0}", definition.TagName);
 
-				var elements = document.SelectNodes(formElementXPath);
+				var elements = document.GetNodes(formElementXPath);
 
 				foreach (var element in elements)
 				{
@@ -35,13 +35,13 @@ namespace Naak.HtmlRules.Impl
 						var elementId = idAttribute.Value;
 						var xpath = string.Format("//label[@for='{0}']", elementId);
 
-						correspondingLabel = document.SelectSingleNode(xpath);
+						correspondingLabel = document.GetNode(xpath);
 					}
 
 					if (correspondingLabel == null)
 					{
-						var message = string.Format("{0} missing correpsonding label: {1}", definition.Description, element.OuterHtml);
-						records.Add(new ValidationError(message));
+						var message = string.Format("{0} missing corresponding label: {1}", definition.Description, element.OuterHtml);
+						records.Add(new ValidationError(message, element.Line, element.LinePosition));
 					}
 				}
 			}
@@ -49,4 +49,4 @@ namespace Naak.HtmlRules.Impl
 			return records.ToArray();
 		}
 	}
-}
+ }

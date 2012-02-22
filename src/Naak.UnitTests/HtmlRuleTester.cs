@@ -30,12 +30,17 @@ namespace Naak.UnitTests
 
 		protected int ErrorCount
 		{
-			get { return _errors.Length; }
+			get { return Errors.Length; }
 		}
 
-		protected bool ContainsError(string message)
+	    public ValidationError[] Errors
+	    {
+	        get { return _errors; }
+	    }
+
+	    protected bool ContainsError(string message)
 		{
-			var containsError = _errors.Any(record => record.Message == message);
+			var containsError = Errors.Any(record => record.Message == message);
 			return containsError;
 		}
 

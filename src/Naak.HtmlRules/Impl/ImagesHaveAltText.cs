@@ -12,7 +12,7 @@ namespace Naak.HtmlRules.Impl
 
 			const string formElementXPath = "//img[not(@alt) or @alt='']";
 
-			var imagesWithoutAlt = document.SelectNodes(formElementXPath);
+			var imagesWithoutAlt = document.GetNodes(formElementXPath);
 
 			if (imagesWithoutAlt != null)
 			{
