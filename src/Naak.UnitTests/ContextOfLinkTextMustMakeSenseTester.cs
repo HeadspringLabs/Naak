@@ -1,13 +1,13 @@
-using System.Net.Mime;
 using System.Text;
 using NUnit.Framework;
 using NUnit.Framework.SyntaxHelpers;
 using Naak.HtmlRules.Default;
+using Should;
 
 namespace Naak.UnitTests
 {
 	[TestFixture]
-	public class ContextOfLinkTextMustMakeSenseTester : HtmlRuleTester
+	public class ContextOfLinkTextMustMakeSenseTester
 	{
 		[Test]
 		public void Identifies_link_with_same_URL_same_TEXT_as_No_Error()
@@ -17,8 +17,8 @@ namespace Naak.UnitTests
 			bodyHtml.Append(@"<a href=""/home"">TestLink</a>");
 			bodyHtml.Append(@"<P/>");
 
-			ExecuteTest(new ContextOfLinkTextMustMakeSense(), bodyHtml.ToString());
-			Assert.That(ErrorCount, Is.EqualTo(0));
+			var errors = new ContextOfLinkTextMustMakeSense().ValidateHtml(bodyHtml);
+			CollectionAssert.IsEmpty(errors);
 		}
 
 		[Test]
@@ -29,8 +29,8 @@ namespace Naak.UnitTests
 			bodyHtml.Append(@"<a href=""/home"">TestLink</a>");
 			bodyHtml.Append(@"<P/>");
 
-			ExecuteTest(new ContextOfLinkTextMustMakeSense(), bodyHtml.ToString());
-			Assert.That(ErrorCount, Is.EqualTo(1));
+			var errors = new ContextOfLinkTextMustMakeSense().ValidateHtml(bodyHtml);
+			Assert.That(errors.Length, Is.EqualTo(1));
 		}
 
 		[Test]
@@ -41,8 +41,8 @@ namespace Naak.UnitTests
 			bodyHtml.Append(@"<a href=""/home"" title=""title"">TestLink</a>");
 			bodyHtml.Append(@"<P/>");
 
-			ExecuteTest(new ContextOfLinkTextMustMakeSense(), bodyHtml.ToString());
-			Assert.That(ErrorCount, Is.EqualTo(1));
+			var errors = new ContextOfLinkTextMustMakeSense().ValidateHtml(bodyHtml);
+			Assert.That(errors.Length, Is.EqualTo(1));
 		}
 
 		[Test]
@@ -53,8 +53,8 @@ namespace Naak.UnitTests
 			bodyHtml.Append(@"<a href=""/home"" title=""title"">TestLink</a>");
 			bodyHtml.Append(@"<P/>");
 
-			ExecuteTest(new ContextOfLinkTextMustMakeSense(), bodyHtml.ToString());
-			Assert.That(ErrorCount, Is.EqualTo(0));
+			var errors = new ContextOfLinkTextMustMakeSense().ValidateHtml(bodyHtml);
+			Assert.That(errors.Length, Is.EqualTo(0));
 		}
 
 		[Test]
@@ -65,8 +65,8 @@ namespace Naak.UnitTests
 			bodyHtml.Append(@"<a href=""/home"" title=""title"">TestLink</a>");
 			bodyHtml.Append(@"<P/>");
 
-			ExecuteTest(new ContextOfLinkTextMustMakeSense(), bodyHtml.ToString());
-			Assert.That(ErrorCount, Is.EqualTo(0));
+			var errors = new ContextOfLinkTextMustMakeSense().ValidateHtml(bodyHtml);
+			CollectionAssert.IsEmpty(errors);
 		}
 
 		[Test]
@@ -77,8 +77,8 @@ namespace Naak.UnitTests
 			bodyHtml.Append(@"<a href=""/home"" name=""name"">TestLink</a>");
 			bodyHtml.Append(@"<P/>");
 
-			ExecuteTest(new ContextOfLinkTextMustMakeSense(), bodyHtml.ToString());
-			Assert.That(ErrorCount, Is.EqualTo(1));
+			var errors = new ContextOfLinkTextMustMakeSense().ValidateHtml(bodyHtml);
+		    errors.Length.ShouldEqual(1);
 		}
 
 		[Test]
@@ -89,8 +89,8 @@ namespace Naak.UnitTests
 			bodyHtml.Append(@"<a name=""name"">TestLink</a>");
 			bodyHtml.Append(@"<P/>");
 
-			ExecuteTest(new ContextOfLinkTextMustMakeSense(), bodyHtml.ToString());
-			Assert.That(ErrorCount, Is.EqualTo(0));
+			var errors = new ContextOfLinkTextMustMakeSense().ValidateHtml(bodyHtml);
+			CollectionAssert.IsEmpty(errors);
 		}
 
 		[Test]
@@ -101,8 +101,8 @@ namespace Naak.UnitTests
 			bodyHtml.Append(@"<a href=""/home"" name=""name"">TestLink</a>");
 			bodyHtml.Append(@"<P/>");
 
-			ExecuteTest(new ContextOfLinkTextMustMakeSense(), bodyHtml.ToString());
-			Assert.That(ErrorCount, Is.EqualTo(0));
+			var errors = new ContextOfLinkTextMustMakeSense().ValidateHtml(bodyHtml);
+			CollectionAssert.IsEmpty(errors);
 		}
 
 		[Test]
@@ -113,8 +113,8 @@ namespace Naak.UnitTests
 			bodyHtml.Append(@"<a href=""/home"" name=""name"">TestLink</a>");
 			bodyHtml.Append(@"<P/>");
 
-			ExecuteTest(new ContextOfLinkTextMustMakeSense(), bodyHtml.ToString());
-			Assert.That(ErrorCount, Is.EqualTo(0));
+			var errors = new ContextOfLinkTextMustMakeSense().ValidateHtml(bodyHtml);
+			CollectionAssert.IsEmpty(errors);
 		}
 
 		[Test]
@@ -125,8 +125,8 @@ namespace Naak.UnitTests
 			bodyHtml.Append(@"<a name=""name"">TestLink</a>");
 			bodyHtml.Append(@"<P/>");
 
-			ExecuteTest(new ContextOfLinkTextMustMakeSense(), bodyHtml.ToString());
-			Assert.That(ErrorCount, Is.EqualTo(0));
+			var errors = new ContextOfLinkTextMustMakeSense().ValidateHtml(bodyHtml);
+            CollectionAssert.IsEmpty(errors);
 		}
 	}
 }

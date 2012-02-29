@@ -1,9 +1,10 @@
+using System.Collections.Generic;
 using HtmlAgilityPack;
 
 namespace Naak.HtmlRules
 {
     public interface IHtmlRule
 	{
-		ValidationError[] ValidateHtml(HtmlDocument document);
+		IEnumerable<ValidationError> ValidateHtml(HtmlDocument document);
 	}
 }

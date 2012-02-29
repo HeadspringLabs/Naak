@@ -2,7 +2,7 @@ using System.IO;
 
 namespace Naak.HtmlRules
 {
-	internal class CaptureStream : Stream
+    internal class CaptureStream : Stream
 	{
 		private readonly Stream _internalStream;
 		private Stream _copyStream;

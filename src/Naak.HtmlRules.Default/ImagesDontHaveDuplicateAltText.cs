@@ -7,7 +7,7 @@ namespace Naak.HtmlRules.Default
 	public class ImagesDontHaveDuplicateAltText : IHtmlRule
 	{
 
-		public ValidationError[] ValidateHtml(HtmlDocument document)
+		public IEnumerable<ValidationError> ValidateHtml(HtmlDocument document)
 		{
 			var records = new List<ValidationError>();
 			var previousAltText = new List<string>();
@@ -29,7 +29,7 @@ namespace Naak.HtmlRules.Default
 					previousAltText.Add(altTextAttribute.Value);
 				}
 			}
-			return records.ToArray();
+			return records;
 		}
 	}
 }

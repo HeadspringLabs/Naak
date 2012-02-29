@@ -1,13 +1,12 @@
 using System.Text;
 using Naak.HtmlRules.Default;
-using Naak.UnitTests;
 using NUnit.Framework;
 using NUnit.Framework.SyntaxHelpers;
 
 namespace Naak.UnitTests
 {
 	[TestFixture]
-	public class LabelsRelateToFormElementsTester : HtmlRuleTester
+	public class LabelsRelateToFormElementsTester
 	{
 		[Test]
 		public void Correctly_identifies_labels_that_do_not_relate_to_form_elements()
@@ -46,16 +45,16 @@ namespace Naak.UnitTests
 			html.Append(@"  <label for=""txtArea2"">Area 2</label>");
 			html.Append(@"</form>");
 
-			ExecuteTest(new LabelsRelateToFormElements(), html.ToString());
+			var errors = new LabelsRelateToFormElements().ValidateHtml(html);
 
-			Assert.That(ErrorCount, Is.EqualTo(6));
+			Assert.That(errors.Length, Is.EqualTo(6));
 
-			Assert.That(ContainsError(@"Label does not relate to a form control: <label for=""txtMiddle"">First Name</label>"));
-			Assert.That(ContainsError(@"Label does not relate to a form control: <label>Last Name</label>"));
-			Assert.That(ContainsError(@"Label does not relate to a form control: <label for=""txtRetype"">Retype Password</label>"));
-			Assert.That(ContainsError(@"Label does not relate to a form control: <label for=""chkOption2"">Option 2</label>"));
-			Assert.That(ContainsError(@"Label does not relate to a form control: <label for=""ddlStatus2"">Status 2</label>"));
-			Assert.That(ContainsError(@"Label does not relate to a form control: <label for=""txtArea2"">Area 2</label>"));
+            Assert.That(errors.ContainsError(@"Label does not relate to a form control: <label for=""txtMiddle"">First Name</label>"));
+            Assert.That(errors.ContainsError(@"Label does not relate to a form control: <label>Last Name</label>"));
+            Assert.That(errors.ContainsError(@"Label does not relate to a form control: <label for=""txtRetype"">Retype Password</label>"));
+            Assert.That(errors.ContainsError(@"Label does not relate to a form control: <label for=""chkOption2"">Option 2</label>"));
+            Assert.That(errors.ContainsError(@"Label does not relate to a form control: <label for=""ddlStatus2"">Status 2</label>"));
+            Assert.That(errors.ContainsError(@"Label does not relate to a form control: <label for=""txtArea2"">Area 2</label>"));
 		}
 	}
 }

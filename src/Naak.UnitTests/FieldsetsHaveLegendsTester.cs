@@ -6,7 +6,7 @@ using Naak.HtmlRules.Default;
 namespace Naak.UnitTests
 {
 	[TestFixture]
-	public class FieldsetsHaveLegendsTester : HtmlRuleTester
+	public class FieldsetsHaveLegendsTester
 	{
 		[Test]
 		public void Identifies_fieldsets_missing_legends()
@@ -28,9 +28,9 @@ namespace Naak.UnitTests
 			html.Append(@"  <fieldset />");
 			html.Append(@"</form>");
 
-			ExecuteTest(new FieldsetsHaveLegends(), html.ToString());
+			var errors = new FieldsetsHaveLegends().ValidateHtml(html);
 
-			Assert.That(ErrorCount, Is.EqualTo(2));
+			Assert.That(errors.Length, Is.EqualTo(2));
 		}
 
 		[Test]
@@ -38,9 +38,8 @@ namespace Naak.UnitTests
 		{
 			const string bodyHtml = "<h1>Sample Heading</h1>";
 
-			ExecuteTest(new AtLeastOneH1(), bodyHtml);
-
-			Assert.That(ErrorCount, Is.EqualTo(0));
+			var errors = new AtLeastOneH1().ValidateHtml(bodyHtml);
+            CollectionAssert.IsEmpty(errors);
 		}
 	}
 }

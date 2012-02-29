@@ -6,7 +6,7 @@ namespace Naak.HtmlRules.Default
     [HtmlRule]
 	public class ImageInputsHaveAltText : IHtmlRule
 	{
-		public ValidationError[] ValidateHtml(HtmlDocument document)
+		public IEnumerable<ValidationError> ValidateHtml(HtmlDocument document)
 		{
 			var records = new List<ValidationError>();
 
@@ -20,7 +20,7 @@ namespace Naak.HtmlRules.Default
                 records.Add(new ValidationError(message, imageButton.Line, imageButton.LinePosition));
 			}
 
-			return records.ToArray();
+			return records;
 		}
 	}
 }

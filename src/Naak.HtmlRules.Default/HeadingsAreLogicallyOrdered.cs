@@ -6,7 +6,7 @@ namespace Naak.HtmlRules.Default
     [HtmlRule]
 	public class HeadingsAreLogicallyOrdered : IHtmlRule
 	{
-		public ValidationError[] ValidateHtml(HtmlDocument document)
+		public IEnumerable<ValidationError> ValidateHtml(HtmlDocument document)
 		{
 			var records = new List<ValidationError>();
 			var headingNodes = new List<HtmlNode>();
@@ -30,7 +30,7 @@ namespace Naak.HtmlRules.Default
 				currentLevel = foundLevel;
 			}
 
-			return records.ToArray();
+			return records;
 		}
 
 		private static void PopulateHeadingNodeList(HtmlNode parentNode, List<HtmlNode> nodes)

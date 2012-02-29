@@ -6,7 +6,7 @@ namespace Naak.HtmlRules.Default
     [HtmlRule]
 	public class NoDuplicateImageAltTags : IHtmlRule
 	{
-		public ValidationError[] ValidateHtml(HtmlDocument document)
+		public IEnumerable<ValidationError> ValidateHtml(HtmlDocument document)
 		{
 			var records = new List<ValidationError>();
 
@@ -47,7 +47,7 @@ namespace Naak.HtmlRules.Default
 			//  records.Add(new ValidationError("There must be at least one H1 tag on the page"));
 			//}
 
-			return records.ToArray();
+			return records;
 		}
 	}
 }

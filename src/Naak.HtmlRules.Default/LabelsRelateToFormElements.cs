@@ -6,7 +6,7 @@ namespace Naak.HtmlRules.Default
     [HtmlRule]
 	public class LabelsRelateToFormElements : IHtmlRule
 	{
-		public ValidationError[] ValidateHtml(HtmlDocument document)
+		public IEnumerable<ValidationError> ValidateHtml(HtmlDocument document)
 		{
 			var records = new List<ValidationError>();
 
@@ -44,7 +44,7 @@ namespace Naak.HtmlRules.Default
 				}
 			}
 
-			return records.ToArray();
+			return records;
 		}
 	}
 }

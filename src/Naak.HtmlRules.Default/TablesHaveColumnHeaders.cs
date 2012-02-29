@@ -7,7 +7,7 @@ namespace Naak.HtmlRules.Default
     [HtmlRule]
 	public class TablesHaveColumnHeaders : IHtmlRule
 	{
-		public ValidationError[] ValidateHtml(HtmlDocument document)
+		public IEnumerable<ValidationError> ValidateHtml(HtmlDocument document)
 		{
 			var records = new List<ValidationError>();
 
@@ -27,7 +27,7 @@ namespace Naak.HtmlRules.Default
 						records.Add(new ValidationError(message));
 					}
 				}
-			return records.ToArray();
+			return records;
 		}
 	}
 }

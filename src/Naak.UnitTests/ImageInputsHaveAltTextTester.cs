@@ -1,13 +1,12 @@
 using System.Text;
 using Naak.HtmlRules.Default;
-using Naak.UnitTests;
 using NUnit.Framework;
 using NUnit.Framework.SyntaxHelpers;
 
 namespace Naak.UnitTests
 {
 	[TestFixture]
-	public class ImageInputsHaveAltTextTester : HtmlRuleTester
+	public class ImageInputsHaveAltTextTester
 	{
 		[Test]
 		public void Correctly_identifies_image_inputs_missing_alt_tag()
@@ -19,11 +18,11 @@ namespace Naak.UnitTests
 			bodyHtml.Append(@"  <input type=""image"" id=""imgSecond"" alt=""Image Description""/>");
 			bodyHtml.Append(@"</form>");
 
-			ExecuteTest(new ImageInputsHaveAltText(), bodyHtml.ToString());
+			var errors = new ImageInputsHaveAltText().ValidateHtml(bodyHtml);
 
-			Assert.That(ErrorCount, Is.EqualTo(2));
-			Assert.That(ContainsError(@"Image input missing alt text: <input type=""image"" id=""imgFirst"" alt="""">"));
-			Assert.That(ContainsError(@"Image input missing alt text: <input type=""image"" id=""imgSecond"">"));
+			Assert.That(errors.Length, Is.EqualTo(2));
+			Assert.That(errors.ContainsError(@"Image input missing alt text: <input type=""image"" id=""imgFirst"" alt="""">"));
+			Assert.That(errors.ContainsError(@"Image input missing alt text: <input type=""image"" id=""imgSecond"">"));
 		}
 	}
 }

@@ -6,7 +6,7 @@ using Naak.HtmlRules.Default;
 namespace Naak.UnitTests
 {
 	[TestFixture]
-	public class FormElementsHaveLabelsTester : HtmlRuleTester
+	public class FormElementsHaveLabelsTester
 	{
 		[Test]
 		public void Correctly_identifies_form_fields_missing_labels()
@@ -48,27 +48,27 @@ namespace Naak.UnitTests
 			html.Append(@"  <textarea id=""txtArea2"" />");
 			html.Append(@"</form>");
 
-			ExecuteTest(new FormElementsHaveLabels(), html.ToString());
+			var errors = new FormElementsHaveLabels().ValidateHtml(html);
+		    
+		    Assert.That(errors.Length, Is.EqualTo(6));
 
-			Assert.That(ErrorCount, Is.EqualTo(6));
+		    Assert.That(errors[0].Message.Contains("Textbox missing corresponding label"));
+		    Assert.That(errors[0].Message.Contains(@"id=""txtMiddleName"""));
 
-		    Assert.That(Errors[0].Message.Contains("Textbox missing corresponding label"));
-		    Assert.That(Errors[0].Message.Contains(@"id=""txtMiddleName"""));
+            Assert.That(errors[1].Message.Contains("Textbox missing corresponding label"));
+            Assert.That(errors[1].Message.Contains(@"id=""txtLastName"""));
 
-            Assert.That(Errors[1].Message.Contains("Textbox missing corresponding label"));
-            Assert.That(Errors[1].Message.Contains(@"id=""txtLastName"""));
+            Assert.That(errors[2].Message.Contains("Password textbox missing corresponding label"));
+            Assert.That(errors[2].Message.Contains(@"id=""txtRetypePassword"""));
 
-            Assert.That(Errors[2].Message.Contains("Password textbox missing corresponding label"));
-            Assert.That(Errors[2].Message.Contains(@"id=""txtRetypePassword"""));
+            Assert.That(errors[3].Message.Contains("Checkbox missing corresponding label"));
+            Assert.That(errors[3].Message.Contains(@"id=""chkOption2"""));
 
-            Assert.That(Errors[3].Message.Contains("Checkbox missing corresponding label"));
-            Assert.That(Errors[3].Message.Contains(@"id=""chkOption2"""));
+            Assert.That(errors[4].Message.Contains("Select list missing corresponding label"));
+            Assert.That(errors[4].Message.Contains(@"id=""ddlStatus2"""));
 
-            Assert.That(Errors[4].Message.Contains("Select list missing corresponding label"));
-            Assert.That(Errors[4].Message.Contains(@"id=""ddlStatus2"""));
-
-            Assert.That(Errors[5].Message.Contains("Text area missing corresponding label"));
-            Assert.That(Errors[5].Message.Contains(@"id=""txtArea2"""));
+            Assert.That(errors[5].Message.Contains("Text area missing corresponding label"));
+            Assert.That(errors[5].Message.Contains(@"id=""txtArea2"""));
 	    }
 	}
 }
