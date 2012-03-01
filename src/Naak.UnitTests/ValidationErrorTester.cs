@@ -1,6 +1,5 @@
 using Naak.HtmlRules;
 using NUnit.Framework;
-using NUnit.Framework.SyntaxHelpers;
 
 namespace Naak.UnitTests
 {

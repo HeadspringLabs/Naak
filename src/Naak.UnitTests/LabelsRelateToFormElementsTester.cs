@@ -1,7 +1,6 @@
 using System.Text;
 using Naak.HtmlRules.Default;
 using NUnit.Framework;
-using NUnit.Framework.SyntaxHelpers;
 
 namespace Naak.UnitTests
 {
